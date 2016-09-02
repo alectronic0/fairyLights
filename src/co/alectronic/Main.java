@@ -94,8 +94,8 @@ public class Main {
         private int seq = 0;
 
         /**
-         * @param li
-         * @param t
+         * @param li see algController
+         * @param t see algController
          * @see algController
          */
         public algSeqController(LightArray li, int t) {
@@ -106,22 +106,23 @@ public class Main {
          *@see algController
          */
         public void run() {
-            while (true) {
-                if (seq > super.lightArr.getLightArraySize()) {
-                    seq = 0;
-                }
+            try {
+                while (true) {
+                    if (seq > super.lightArr.getLightArraySize()) {
+                        seq = 0;
+                    }
 
-                super.lightArr.changeLight(seq);
+                    super.lightArr.changeLight(seq);
 
-                try {
+
                     Thread.sleep(super.time);
-                } catch (Exception e) {
-                    e.printStackTrace();
+
+                    super.lightArr.changeLight(seq);
+
+                    seq++;
                 }
-
-                super.lightArr.changeLight(seq);
-
-                seq++;
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
@@ -133,8 +134,8 @@ public class Main {
         private String[] listOfColours;
 
         /**
-         * @param li
-         * @param t
+         * @param li see algController
+         * @param t see algController
          * @param colourList set the colour you wish to alternate between with this controller
          * @see algController
          */
@@ -169,8 +170,8 @@ public class Main {
     private static class algAltController extends algController {
 
         /**
-         * @param li
-         * @param t
+         * @param li see algController
+         * @param t see algController
          * @see algController
          */
         public algAltController(LightArray li, int t) {
