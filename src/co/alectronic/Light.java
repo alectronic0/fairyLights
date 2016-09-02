@@ -40,7 +40,7 @@ public class Light {
      * @param col ss
      * @return ss
      */
-    private boolean isThisColour(String col) {
+    public boolean isThisColour(String col) {
         return colour.toLowerCase().equals(col.toLowerCase());
     }
 
