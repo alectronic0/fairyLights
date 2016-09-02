@@ -1,10 +1,5 @@
 package co.alectronic;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-import static sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl.ThreadStateMap.Byte0.runnable;
-
 public class Main {
     public static final String SEQ = "sequence";
     public static final String COL = "colour";
@@ -17,15 +12,23 @@ public class Main {
     public static final int COL_MILLI_TIME = 1000;
     public static final int ALT_MILLI_TIME = 30000;
 
-
+    /**
+     * Main function
+     * This runs a demo of the Lights flick on and off in a pretty order.
+     * <p>
+     * Future implmentation could use mutiple args to define colours, amount of lights and special sequence cases.
+     *
+     * @param args Current only takes one arg (args[0]) this set the type of sequence. (this is out of Scope)
+     */
     public static void main(String[] args) {
-        // write your code here
-        Timer timer = new Timer();
-        //check there is a 1st arrValue
-        if (args.length == 1) {
+
+        LightArray arrLi = new LightArray(NO_LIGHTS);
+        Thread d;
+
+        //check there is at least 1 argument.
+        if (args.length > 0) {
             String cmd = args[0].toLowerCase();
-            LightArray arrLi = new LightArray(NO_LIGHTS);
-            Thread d;
+
             if (cmd.equals(SEQ)) {
                 //1.	'sequence' : each light is turned on for 0.5 seconds then off in turn from first to last.
                 System.out.println("Starting Default Sequence:");
@@ -45,36 +48,63 @@ public class Main {
                 d.start();
 
             } else {
-                System.out.println("Incorrect command. Starting Atl Sequence:");
-
+                //Not one of the right args
+                System.out.println("Invalid Argument.");
+                System.out.println("Try adding either '" + SEQ + "','" + COL + "','" + ALT + "' as an Argument to this Programme.");
             }
 
         } else {
-            System.out.println("You Don't have the right amount of Args. Starting Atl Sequence:");
+            //you have no args
+            System.out.println("You are missing and Argument.");
+            System.out.println("Try adding either '" + SEQ + "','" + COL + "','" + ALT + "' as an Argument to this Programme.");
         }
     }
 
 
+    /**
+     * abstract controller algorithm Class
+     *
+     *
+     */
     private abstract static class algController implements Runnable {
         private static LightArray lightArr;
-        private int time;
+        private int time; //time delay used when extended
 
+        /**
+         * algController constructor
+         * @param li lights Array that will be mainpulated with this programme.
+         * @param t time in millisec used to hold the delay of switching light ON or OFF.
+         */
         public algController(LightArray li, int t) {
             lightArr = li;
             time = t;
         }
 
+        /**
+         *
+         */
         public void run() {
         }
     }
 
+    /**
+     *
+     */
     private static class algSeqController extends algController {
         private int seq = 0;
 
+        /**
+         * @param li
+         * @param t
+         * @see algController
+         */
         public algSeqController(LightArray li, int t) {
             super(li, t);
         }
 
+        /**
+         *@see algController
+         */
         public void run() {
             while (true) {
                 if (seq > super.lightArr.getLightArraySize()) {
@@ -96,15 +126,26 @@ public class Main {
         }
     }
 
-
+    /**
+     *
+     */
     private static class algColourController extends algController {
         private String[] listOfColours;
 
+        /**
+         * @param li
+         * @param t
+         * @param colourList set the colour you wish to alternate between with this controller
+         * @see algController
+         */
         public algColourController(LightArray li, int t, String[] colourList) {
             super(li, t);
             listOfColours = colourList;
         }
 
+        /**
+         *@see algController
+         */
         public void run() {
             try {
                 while (true) {
@@ -130,6 +171,7 @@ public class Main {
         /**
          * @param li
          * @param t
+         * @see algController
          */
         public algAltController(LightArray li, int t) {
             super(li, t);
