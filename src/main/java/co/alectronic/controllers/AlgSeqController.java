@@ -21,6 +21,7 @@ public class AlgSeqController extends AbstractAlgController {
     /**
      *@see AbstractAlgController
      */
+    @Override
     public void run() {
         try {
             while (true) {

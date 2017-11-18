@@ -1,11 +1,13 @@
 package co.alectronic;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class LightArray {
-    private ArrayList<Light> lights;
+
+
+    private List<Light> lights;
     private String[] listOfColours;
 
     //Contrructors
@@ -17,7 +19,7 @@ public class LightArray {
      * @param l int which determines the inital size of the ArrayList (which generated Lights)
      */
     public LightArray(int l) {
-        lights = new ArrayList<Light>();
+        lights = new ArrayList<>();
         listOfColours = new String[]{"Red", "Green", "White"};
         for (int i = 0; i < l; i++) {
             lights.add(new Light(getColour(i)));
@@ -31,14 +33,30 @@ public class LightArray {
      * @param colourList this is a String array contain the order of the lights Colour.
      */
     public LightArray(int l, String[] colourList) {
-        lights = new ArrayList<Light>();
+        lights = new ArrayList<>();
         listOfColours = colourList;
         for (int i = 0; i < l; i++) {
             lights.add(new Light(getColour(i)));
         }
     }
 
+    public List<Light> getLights() {
+        return lights;
+    }
+//    private void setLights(ArrayList<Light> lights) {
+//        this.lights = lights;
+//    }
+//
+//    private String[] getListOfColours() {
+//        return listOfColours;
+//    }
+//    private void setListOfColours(String[] listOfColours) {
+//        this.listOfColours = listOfColours;
+//    }
+
+
     //GETTERS
+
 
     /**
      * This method returns a colour from the listOfColour Array which would be the order of the colours within the group.
@@ -50,7 +68,7 @@ public class LightArray {
      * @param i an int which represent the location within a chain of light to help decide the colour it should be.
      * @return Returns a String contain the colour with the order.
      */
-    public String getColour(int i) {
+    private String getColour(int i) {
         return listOfColours[i % listOfColours.length];
     }
 
@@ -95,12 +113,7 @@ public class LightArray {
      * @return Return True if it found the Colour you were searching for.
      */
     public boolean colourInList(String colour) {
-        for (String col : listOfColours) {
-            if (colour.toLowerCase().equals(col.toLowerCase())) {
-                return true;
-            }
-        }
-        return false;
+        return Arrays.stream(listOfColours).anyMatch(s-> s.equalsIgnoreCase(colour));
     }
 
 //setters
@@ -112,9 +125,7 @@ public class LightArray {
      * @param colour String, the colour of the subset of lights you wish to change the state of.
      */
     public void switchColourLight(String colour) {
-        for (int i : getColoursPos(colour)) {
-            changeLight(i);
-        }
+        getColoursPos(colour).forEach(this::changeLight);
     }
 
     /**
@@ -134,29 +145,28 @@ public class LightArray {
      * code isn't very elegant atm need to rewite it to control it via the object and not the posistion similiar to turnOffAllTheLights & turnOnAllTheLights
      */
     public void flickAllTheSwitch() {
-        int i = 1;
-        for (Light li : lights) {
-            changeLight(i);
-            i++;
-        }
+        final int[] i = {0};
+        lights.forEach(l->{
+            l.switchLight();
+            System.out.println((new SimpleDateFormat("HH:mm:ss:SSS").format(new Date())) + " : Light " + (i[0] + 1) + " " + l.toString());
+            i[0]++;
+
+        });
     }
 
     /**
      * Turn off all with in the lights Array
      */
     public void turnOffAllTheLights() {
-        for (Light li : lights) {
-            li.turnOffLight();
-        }
+        lights.forEach(Light::turnOffLight);
     }
 
     /**
      * Turn on all with in the lights Array
      */
     public void turnOnAllTheLights() {
-        for (Light li : lights) {
-            li.turnOnLight();
-        }
+        lights.forEach(Light::turnOnLight);
+
     }
 
 

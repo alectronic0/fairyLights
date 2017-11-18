@@ -1,6 +1,6 @@
-package co.alectronic.until;
+package co.alectronic.util;
 
-public class Helper {
+public final class Helper {
     public static final String SEQ = "sequence";
     public static final String COL = "colour";
     public static final String ALT = "alternate";
@@ -11,7 +11,6 @@ public class Helper {
     public static final int SEQ_MILLI_TIME = 500;
     public static final int COL_MILLI_TIME = 1000;
     public static final int ALT_MILLI_TIME = 30000;
-
 
     public static int parseArg(String val, int defaultVal){
         try{

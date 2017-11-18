@@ -4,10 +4,9 @@ import co.alectronic.controllers.AlgAltController;
 import co.alectronic.controllers.AlgColourController;
 import co.alectronic.controllers.AlgSeqController;
 
-import static co.alectronic.until.Helper.*;
+import static co.alectronic.util.Helper.*;
 
 public class Main {
-
 
     /**
      * Main function

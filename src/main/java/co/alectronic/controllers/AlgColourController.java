@@ -22,6 +22,7 @@ public class AlgColourController extends AbstractAlgController {
     /**
      *@see AbstractAlgController
      */
+    @Override
     public void run() {
         try {
             while (true) {

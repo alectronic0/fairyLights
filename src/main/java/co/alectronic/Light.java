@@ -11,8 +11,7 @@ public class Light {
      * Creates a Light Object which is switched off and bulb colour is White.
      */
     public Light() {
-        lightState = false;
-        this.colour = "white";
+        this("white");
     }
 
     /**
@@ -22,8 +21,7 @@ public class Light {
      * @param colour Colour of the Bulb.
      */
     public Light(String colour) {
-        lightState = false;
-        this.colour = colour;
+        this(colour,false);
     }
 
     /**
@@ -34,8 +32,8 @@ public class Light {
      * @param state  set the Bulbs state of ON or OFF
      */
     public Light(String colour, boolean state) {
-        lightState = state;
-        this.colour = colour;
+        setLightState(state);
+        setColour(colour);
     }
 
 
@@ -52,7 +50,7 @@ public class Light {
      * @param s String that sets the colour of the bulb.
      */
     public void setColour(String s) {
-        colour = s.toLowerCase();
+        colour = (s == null)? "white".toLowerCase() : s.toLowerCase();
     }
 
     /**

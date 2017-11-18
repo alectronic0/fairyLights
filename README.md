@@ -22,3 +22,14 @@ java -jar target/fairylight.jar "alternate"
 #
 java -jar target/fairylight.jar "sequence" "15"
 ```
+
+## Reports & Tests
+I've added the following reports:
+- Jacoco Coverage
+- Owasp Dependency Check
+- Junit Test
+
+Run this and the report will displaed on your default browser (Linux or Mac)
+```bash
+./testme.sh
+```
