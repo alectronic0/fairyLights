@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  app:
+    build:
+      context: .
+    command:
+      - "java"
+      - "-jar"
+      - "/app.jar"
+      - "sequence"
+#      - "colour"
+#      - "alternate"
+

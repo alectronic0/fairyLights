@@ -9,6 +9,7 @@ The controller is a java program that accepts (as a command line parameter) the 
 To Compile run the Light.bat File (modify the path for your javac, jar and java cmd as needed)
 
 ## Quickstart
+Locally:
 ```bash
 git clone https://github.com/alectronic0/fairyLights.git
 cd fairyLights
@@ -22,6 +23,14 @@ java -jar target/fairylight.jar "alternate"
 #
 java -jar target/fairylight.jar "sequence" "15"
 ```
+Docker:
+```bash
+git clone https://github.com/alectronic0/fairyLights.git
+cd fairyLights
+mvn clean install
+docker-compose up
+```
+
 
 ## Reports & Tests
 I've added the following reports:
