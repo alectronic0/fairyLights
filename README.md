@@ -1,5 +1,6 @@
 # fairyLights
-[![Build Status](https://travis-ci.org/alectronic0/fairyLights.svg?branch=master)](https://travis-ci.org/alectronic0/fairyLights) [![codecov](https://codecov.io/gh/alectronic0/fairyLights/branch/master/graph/badge.svg)](https://codecov.io/gh/alectronic0/fairyLights)
+[![Build Status](https://travis-ci.org/alectronic0/fairyLights.svg?branch=master)](https://travis-ci.org/alectronic0/fairyLights)
+[![codecov](https://codecov.io/gh/alectronic0/fairyLights/branch/master/graph/badge.svg)](https://codecov.io/gh/alectronic0/fairyLights)
 
 ## intro
 
