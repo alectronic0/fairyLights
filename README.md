@@ -1,8 +1,7 @@
 # fairyLights
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/01790438455e4df98250f01d940870f3)](https://www.codacy.com/app/alectronic0/fairyLights?utm_source=github.com&utm_medium=referral&utm_content=alectronic0/fairyLights&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/alectronic0/fairyLights.svg?branch=master)](https://travis-ci.org/alectronic0/fairyLights)
 [![codecov](https://codecov.io/gh/alectronic0/fairyLights/branch/master/graph/badge.svg)](https://codecov.io/gh/alectronic0/fairyLights)
-
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/01790438455e4df98250f01d940870f3)](https://www.codacy.com/app/alectronic0/fairyLights)
 ## intro
 
 The exercise is to write a controller for a length of fairy lights.  There are 20 fairy lights in alternating colours red, green and white that can be independently turned on and off. 
